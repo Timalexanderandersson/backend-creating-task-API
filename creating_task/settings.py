@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -58,8 +58,12 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    
+    #'DEFAULT_RENDERER_CLASSES': [
+     #   'rest_framework.renderers.JSONRenderer',
+    #],
+    'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
 }
+
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
