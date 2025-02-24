@@ -26,5 +26,7 @@ urlpatterns = [
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),  # Inloggning, utloggning etc.
+    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
     
 ]

@@ -44,8 +44,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
 
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+
     'thetask',
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -58,9 +64,9 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    #'DEFAULT_RENDERER_CLASSES': [
-     #   'rest_framework.renderers.JSONRenderer',
-    #],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
     'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
 }
 
@@ -70,6 +76,17 @@ JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=12),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),   
+    'ROTATE_REFRESH_TOKENS': True,    
+    'BLACKLIST_AFTER_ROTATION': True,    
+    'ALGORITHM': 'HS256',    
+    'SIGNING_KEY': 'your-secret-key',
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
 
 ROOT_URLCONF = 'creating_task.urls'
 
