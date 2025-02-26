@@ -35,6 +35,9 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',  # För frontend som körs på localhost
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
 # Application definition
 
