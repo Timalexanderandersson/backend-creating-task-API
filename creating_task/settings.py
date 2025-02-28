@@ -73,7 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    #'allauth.account.middleware.AccountMiddleware',
     
 ]
 
@@ -86,7 +86,6 @@ REST_FRAMEWORK = {
     ],
     'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
 }
-
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
@@ -106,6 +105,8 @@ SIMPLE_JWT = {
     'SIGNING_KEY': 'your-secret-key',
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+
 
 ROOT_URLCONF = 'creating_task.urls'
 
