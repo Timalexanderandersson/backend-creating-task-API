@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS'),'127.0.0.1']
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS'),'127.0.0.1', "http://localhost:3000"]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',  # För frontend som körs på localhost
