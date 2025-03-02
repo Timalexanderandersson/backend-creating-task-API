@@ -5,5 +5,5 @@ from .models import ModelTask
 class SerializersTask(serializers.ModelSerializer):
     class Meta:
         model = ModelTask
-        fields = "__all__"
+        fields = 'title', 'description','created_at'
 

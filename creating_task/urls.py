@@ -16,12 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import Heyapi, logout_view
+from .views import hey_api, logout_view
 from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
     path('', include('thetask.urls')),
-    path('', Heyapi),
+    path('', hey_api),
     path('dj-rest-auth/logout/', logout_view, name='logout'),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
