@@ -31,13 +31,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS'),'127.0.0.1', "http://localhost:3000"]
 
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-      os.environ.get('ALLOWED_FRONTEND')  # För frontend som körs på localhost
-]
+
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
     os.environ.get('ALLOWED_FRONTEND')
 ]
 
