@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from .models import ModelTask
 from .serializers import SerializersTask
-from rest_framework import generics, permissions, status
-from rest_framework.response import Response
-from rest_framework.renderers import JSONRenderer
+from rest_framework import generics, permissions
+from rest_framework.exceptions import PermissionDenied
 
 
 # Views for Showing user all the tasks.
@@ -13,6 +12,8 @@ class Taskconfiguration(generics.ListAPIView):
 
 
     def get_queryset(self):
+        if not self.request.user.is_authenticated:
+            raise PermissionDenied("You must be logged in to view tasks.")
         return ModelTask.objects.filter(user=self.request.user)
 
 #creating the tasks
