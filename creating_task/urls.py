@@ -25,8 +25,9 @@ urlpatterns = [
     path('dj-rest-auth/logout/', logout_view, name='logout'),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),  # Inloggning, utloggning etc.
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
- 
+    path('dj-rest-auth/login/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('dj-rest-auth/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'), 
     
 ]
