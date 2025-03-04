@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import hey_api, logout_view
+from .views import hey_api
 from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
