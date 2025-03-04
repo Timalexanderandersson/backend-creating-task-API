@@ -20,7 +20,7 @@ from .views import hey_api
 
 
 urlpatterns = [
-    path('hey/', hey_api),
+    path('', hey_api),
     path('admin/', admin.site.urls),
     path('', include('thetask.urls')),
     path('api-auth/', include('rest_framework.urls')),
