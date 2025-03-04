@@ -31,9 +31,12 @@ DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS'),'127.0.0.1', "http://localhost:3000"]
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+]
 
 CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
     os.environ.get('ALLOWED_FRONTEND')
 ]
 
@@ -95,7 +98,6 @@ JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
-CORS_ALLOW_CREDENTIALS = True
 
 
 SIMPLE_JWT = {
@@ -108,7 +110,7 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
-
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'creating_task.urls'
 
