@@ -81,7 +81,7 @@ MIDDLEWARE = [
     
 ]
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(seconds=10),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=3),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
@@ -94,6 +94,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     ],
+
     
     'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
 }
