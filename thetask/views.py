@@ -6,11 +6,14 @@ from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied
 
 
-# Views for Showing user all the tasks.
+
 class Taskconfiguration(generics.ListAPIView):
     serializer_class = SerializersTask
     permission_classes = [permissions.IsAuthenticated]
-    queryset = ModelTask.objects.all()
+
+  
+    def get_queryset(self):
+        return ModelTask.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         return serializer.save(user=self.request.user)
@@ -27,25 +30,22 @@ class Taskconfiguration(generics.ListAPIView):
 class Taskedition(generics.GenericAPIView):
     serializer_class = SerializersTask
     permission_classes = [permissions.IsAuthenticated]
-    queryset = ModelTask.objects.all()
 
-    # Hämta objektet
     def get_object(self, pk):
         try:
-            task = ModelTask.objects.get(pk=pk)
+            task = ModelTask.objects.get(pk=pk, user=self.request.user)  
             self.check_object_permissions(self.request, task)
             return task
         except ModelTask.DoesNotExist:
-            raise PermissionDenied("Task not found.")
+            raise PermissionDenied("Task not found or not owned by this user.")
 
     def get(self, request, pk=None):
-        # Hämta uppgiften med pk
         task = self.get_object(pk)
         serializer = SerializersTask(task)
         return Response(serializer.data)
 
     def post(self, request):
-        # Skapa en ny uppgift
+     
         serializer = SerializersTask(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
@@ -53,8 +53,7 @@ class Taskedition(generics.GenericAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk):
-        # Uppdatera en specifik uppgift
-        task = self.get_object(pk)
+        task = self.get_object(pk)  
         serializer = SerializersTask(task, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -62,7 +61,6 @@ class Taskedition(generics.GenericAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        # Ta bort en specifik uppgift
-        task = self.get_object(pk)
+        task = self.get_object(pk) 
         task.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
