@@ -101,15 +101,6 @@ JWT_AUTH_SAMESITE = 'None'
 
 
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=12),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),   
-    'ROTATE_REFRESH_TOKENS': True,    
-    'BLACKLIST_AFTER_ROTATION': True,    
-    'ALGORITHM': 'HS256',    
-    'SIGNING_KEY': 'your-secret-key',
-    'AUTH_HEADER_TYPES': ('Bearer',),
-}
 
 CORS_ALLOW_CREDENTIALS = True
 
